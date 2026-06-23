@@ -1,7 +1,18 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import type { ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
+
+function useCanAnimate() {
+  const prefersReducedMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  return mounted && !prefersReducedMotion;
+}
 
 type RevealProps = {
   children: ReactNode;
@@ -18,10 +29,10 @@ export function Reveal({
   duration = 0.5,
   as = "div",
 }: RevealProps) {
-  const prefersReducedMotion = useReducedMotion();
+  const canAnimate = useCanAnimate();
   const Component = motion[as];
 
-  if (prefersReducedMotion) {
+  if (!canAnimate) {
     const StaticTag = as;
     return <StaticTag className={className}>{children}</StaticTag>;
   }
@@ -46,9 +57,9 @@ type StaggerProps = {
 };
 
 export function Stagger({ children, className, stagger = 0.07 }: StaggerProps) {
-  const prefersReducedMotion = useReducedMotion();
+  const canAnimate = useCanAnimate();
 
-  if (prefersReducedMotion) {
+  if (!canAnimate) {
     return <div className={className}>{children}</div>;
   }
 
@@ -77,9 +88,9 @@ export function StaggerItem({
   children: ReactNode;
   className?: string;
 }) {
-  const prefersReducedMotion = useReducedMotion();
+  const canAnimate = useCanAnimate();
 
-  if (prefersReducedMotion) {
+  if (!canAnimate) {
     return <div className={className}>{children}</div>;
   }
 
