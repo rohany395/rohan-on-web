@@ -5,8 +5,16 @@ export type Profile = {
   email: string;
   linkedin: string;
   github: string;
+  headline: string;
+  subline: string;
   summary: string;
+  availability: string;
   resumePath: string;
+};
+
+export type ImpactStat = {
+  value: string;
+  label: string;
 };
 
 export type Experience = {
@@ -14,7 +22,11 @@ export type Experience = {
   company: string;
   role: string;
   period: string;
+  timeline: "current" | "previous";
   bullets: string[];
+  featured?: boolean;
+  pullQuote?: string;
+  compact?: boolean;
   links?: { label: string; href: string }[];
 };
 
@@ -23,7 +35,10 @@ export type Project = {
   name: string;
   tech: string[];
   url: string;
-  bullets: string[];
+  highlight: string;
+  problem: string;
+  built: string;
+  result: string;
 };
 
 export type Education = {
@@ -33,8 +48,9 @@ export type Education = {
   period: string;
 };
 
-export type SkillGroup = {
-  category: string;
+export type SkillPillar = {
+  title: string;
+  description: string;
   items: string[];
 };
 
@@ -51,10 +67,21 @@ export const profile: Profile = {
   email: "rohany395@gmail.com",
   linkedin: "https://linkedin.com/in/rohan-yadav5/",
   github: "https://github.com/rohany395",
+  headline: "I build software millions use — and AI products that ship.",
+  subline:
+    "Full-stack engineer. Previously WebMD. Now at Syracuse building research systems and multimodal AI.",
   summary:
-    "Full-stack software engineer with 4+ years shipping production web applications for millions of users. Strong across React/TypeScript frontends, Python and Node backends, SQL, and cloud infrastructure. Proven track record of owning features end to end and delivering measurable user impact across consumer-facing and internal products.",
+    "Full-stack software engineer with 4+ years shipping production web applications for millions of users. Strong across React/TypeScript frontends, Python and Node backends, SQL, and cloud infrastructure.",
+  availability: "Available May 2026",
   resumePath: "/Rohan_Yadav_Resume.pdf",
 };
+
+export const impactStats: ImpactStat[] = [
+  { value: "$9M", label: "Deal influenced" },
+  { value: "50%", label: "Faster page loads" },
+  { value: "Millions", label: "Monthly users" },
+  { value: "90%", label: "Faster AI workflow" },
+];
 
 export const experience: Experience[] = [
   {
@@ -62,11 +89,12 @@ export const experience: Experience[] = [
     company: "Syracuse University",
     role: "Graduate Research Assistant",
     period: "Aug 2025 – Mar 2026",
+    timeline: "current",
     bullets: [
-      "Led a 4-member team to design and deliver an Android application using Java on ATAK, securing funds and extending school-stakeholder partnership by an additional 2 years.",
-      "Integrated an LLM pipeline to process unstructured data and surface actionable insights, improving user workflow.",
-      "Deployed a containerized ATAK Server on Azure with Docker, SSL, and networking rules for secure client connectivity.",
-      "Refactored 60% of the legacy codebase to improve readability, maintainability, and adherence to coding standards.",
+      "Secured 2 additional years of stakeholder funding by leading a 4-person team delivering an Android app on ATAK.",
+      "Integrated an LLM pipeline to turn unstructured field data into actionable insights for users.",
+      "Deployed a containerized ATAK Server on Azure with Docker, SSL, and secure networking.",
+      "Refactored 60% of the legacy codebase to improve maintainability and coding standards.",
     ],
   },
   {
@@ -74,12 +102,16 @@ export const experience: Experience[] = [
     company: "WebMD",
     role: "Software Engineer",
     period: "Apr 2022 – Dec 2024",
+    timeline: "previous",
+    featured: true,
+    pullQuote:
+      "Contributed to closing a $9M deal within one month of release.",
     bullets: [
-      "Developed and launched a Vue.js patient-prep UI that contributed to closing a $9M deal within one month of release.",
-      "Shipped interactive content features including quizzes, slideshows, and articles using component-based TypeScript/Vue.js architecture serving millions of monthly users.",
-      "Reduced page load times by 50% through lazy loading and optimization of Vue.js components across a high-traffic application.",
-      "Designed and maintained SQL DB and backend for a content packaging tool enabling PMs to author and assemble reusable content blocks into production webpages.",
-      "Led migration of 20+ production applications from Vue 2 to Vue 3, managing backward compatibility, writing automated tests, and conducting code reviews to ensure zero downtime.",
+      "Closed a $9M deal within 30 days of shipping a Vue patient-prep UI used in enterprise sales.",
+      "Cut page load times 50% on content features serving millions of monthly users.",
+      "Shipped interactive quizzes, slideshows, and articles on a component-based TypeScript/Vue architecture.",
+      "Built SQL backend and content packaging tool enabling PMs to assemble reusable blocks into production pages.",
+      "Led Vue 2 → Vue 3 migration for 20+ production apps with zero downtime.",
     ],
   },
   {
@@ -87,10 +119,11 @@ export const experience: Experience[] = [
     company: "WebMD",
     role: "Trainee Software Engineer",
     period: "Nov 2021 – Mar 2022",
+    timeline: "previous",
+    compact: true,
     bullets: [
-      "Built and deployed an internal web application for company-wide rewards and recognition used by ~100 employees.",
-      "Extended Backstage, an open source developer portal, using React to streamline repository management.",
-      "Integrated RESTful APIs across front-end applications, collaborating with backend teams on data-driven UI features.",
+      "Shipped company-wide rewards app used by ~100 employees.",
+      "Extended Backstage developer portal in React for repository management.",
     ],
   },
 ];
@@ -99,22 +132,28 @@ export const projects: Project[] = [
   {
     id: "neuro-cue",
     name: "Neuro Cue",
-    tech: ["Python", "Multimodal AI", "Inference pipeline", "React"],
+    tech: ["Python", "Multimodal AI", "React", "Plotly"],
     url: "https://neuro-cue.vercel.app/",
-    bullets: [
-      "Deployed Meta's TRIBE v2 multimodal foundation model on Hugging Face (ZeroGPU); forked the model to patch its torch version pin, restoring deployment after Hugging Face's GPU upgrade to Blackwell broke upstream dependency constraints.",
-      "Built a React + Vite frontend with anatomical region overlay, an interactive 3D Plotly brain heatmap, and a Recharts activation chart for surfacing relevant information quickly.",
-    ],
+    highlight: "Multimodal brain AI",
+    problem:
+      "Exploring TRIBE v2 model outputs was opaque — hard to see what the model was surfacing and where.",
+    built:
+      "React UI with 3D Plotly brain heatmap and anatomical overlays; deployed Meta's TRIBE v2 on Hugging Face ZeroGPU.",
+    result:
+      "Unblocked production deployment after a GPU upgrade broke upstream torch dependency pins.",
   },
   {
     id: "case-generator",
     name: "Clinical Case Study Generator",
-    tech: ["LLM", "RAG", "Python"],
+    tech: ["LLM", "RAG", "Python", "Streamlit"],
     url: "https://neurogenic-case-generator.streamlit.app/",
-    bullets: [
-      "Developed a multi-agent architecture with 3 specialized LLM agents for case generation, clinical documentation, and treatment planning using OpenAI and Anthropic models, generating comprehensive case studies for graduate students.",
-      "Reduced case generation time by 90% by implementing RAG and prompt engineering for generating cases of desired consistency.",
-    ],
+    highlight: "90% faster cases",
+    problem:
+      "Grad students spent hours writing consistent clinical case studies by hand.",
+    built:
+      "3-agent LLM pipeline with RAG using OpenAI and Anthropic models for generation, documentation, and treatment planning.",
+    result:
+      "Cut case generation time by 90% while keeping output clinically consistent.",
   },
 ];
 
@@ -125,50 +164,39 @@ export const education: Education = {
   period: "May 2026",
 };
 
-export const skillGroups: SkillGroup[] = [
+export const skillPillars: SkillPillar[] = [
   {
-    category: "Languages & Frameworks",
+    title: "Ship at scale",
+    description:
+      "Consumer-facing products, performance, migrations, and the tooling to keep them running.",
     items: [
       "React",
       "TypeScript",
-      "Python",
-      "JavaScript",
       "Vue.js",
       "SQL",
       "Node.js",
-      "Java",
-      "FastAPI",
-      "HTML/CSS",
-      "REST APIs",
-      "GraphQL",
-    ],
-  },
-  {
-    category: "Infrastructure",
-    items: [
-      "AWS",
-      "Git",
-      "Docker",
-      "Kubernetes",
-      "Postman",
       "Jest",
       "Cypress",
-      "Jira",
-      "Postgres",
-      "Tableau",
     ],
   },
   {
-    category: "AI Tooling",
+    title: "AI in practice",
+    description:
+      "From RAG pipelines to multimodal models — built to ship, not just demo.",
     items: [
       "RAG",
       "Agents",
-      "Evals",
       "LLM",
       "PyTorch",
-      "Fine-tuning",
-      "Prompt Engineering",
+      "Prompt engineering",
+      "Evals",
     ],
+  },
+  {
+    title: "Own the stack",
+    description:
+      "Front to back: APIs, infra, containers, and cloud deployments.",
+    items: ["AWS", "Azure", "Docker", "Kubernetes", "FastAPI", "Postgres"],
   },
 ];
 

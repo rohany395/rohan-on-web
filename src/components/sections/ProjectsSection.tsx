@@ -1,69 +1,74 @@
 import { projects } from "@/content/resume";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
+import { PageSection } from "@/components/ui/PageSection";
+import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export function ProjectsSection() {
   return (
-    <section
-      id="projects"
-      className="scroll-mt-24 border-y border-border/40 bg-surface/30 py-20 sm:py-28"
-    >
-      <div className="mx-auto max-w-5xl px-6">
-        <Reveal>
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
-            Build
-          </p>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            AI-powered products
-          </h2>
-          <p className="mt-4 max-w-2xl text-muted leading-relaxed">
-            Side projects where I explore multimodal models, RAG pipelines, and
-            interfaces that make complex data approachable.
-          </p>
-        </Reveal>
+    <PageSection id="projects" innerClassName="relative">
+      <div
+        className="pointer-events-none absolute inset-0 -z-10 rounded-3xl bg-[radial-gradient(ellipse_at_center,color-mix(in_srgb,var(--accent)_6%,transparent),transparent_70%)]"
+        aria-hidden
+      />
 
-        <Stagger className="mt-12 grid gap-6 sm:grid-cols-2">
-          {projects.map((project) => (
-            <StaggerItem key={project.id}>
-              <article className="flex h-full flex-col rounded-2xl border border-border bg-background p-6 transition-colors hover:border-accent/30">
-                <div className="flex items-start justify-between gap-4">
-                  <h3 className="text-lg font-semibold text-foreground">
+      <Reveal>
+        <SectionHeading
+          label="Build in public"
+          title="AI experiments that ship"
+          description="Side projects where I explore multimodal models, RAG pipelines, and interfaces that make complex data approachable."
+        />
+      </Reveal>
+
+      <Stagger className="section-content grid gap-6 sm:grid-cols-2">
+        {projects.map((project) => (
+          <StaggerItem key={project.id}>
+            <article className="glass-card group flex h-full flex-col rounded-2xl p-6">
+              <div
+                className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/70 to-transparent opacity-60 transition-opacity group-hover:opacity-100"
+                aria-hidden
+              />
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <p className="project-highlight">{project.highlight}</p>
+                  <h3 className="mt-1 text-base font-semibold text-foreground transition-colors group-hover:text-accent">
                     {project.name}
                   </h3>
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="shrink-0 text-sm text-accent transition-opacity hover:opacity-80"
-                    aria-label={`Open ${project.name}`}
-                  >
-                    Live &rarr;
-                  </a>
                 </div>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {project.tech.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full border border-border bg-surface px-2.5 py-0.5 font-mono text-xs text-muted"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="shrink-0 rounded-full border border-transparent px-2 py-0.5 text-sm text-accent transition-all hover:border-accent/30 hover:bg-accent/10"
+                  aria-label={`Open ${project.name}`}
+                >
+                  Live &rarr;
+                </a>
+              </div>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {project.tech.map((tag) => (
+                  <span key={tag} className="tag">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <dl className="mt-5 flex flex-1 flex-col gap-4">
+                <div className="case-study-row">
+                  <dt>Problem</dt>
+                  <dd>{project.problem}</dd>
                 </div>
-                <ul className="mt-5 flex-1 space-y-3">
-                  {project.bullets.map((bullet, i) => (
-                    <li
-                      key={i}
-                      className="text-sm leading-relaxed text-muted sm:text-base"
-                    >
-                      {bullet}
-                    </li>
-                  ))}
-                </ul>
-              </article>
-            </StaggerItem>
-          ))}
-        </Stagger>
-      </div>
-    </section>
+                <div className="case-study-row">
+                  <dt>Built</dt>
+                  <dd>{project.built}</dd>
+                </div>
+                <div className="case-study-row">
+                  <dt>Result</dt>
+                  <dd className="text-foreground">{project.result}</dd>
+                </div>
+              </dl>
+            </article>
+          </StaggerItem>
+        ))}
+      </Stagger>
+    </PageSection>
   );
 }

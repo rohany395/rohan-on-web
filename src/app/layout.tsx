@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { AmbientBackground } from "@/components/ui/AmbientBackground";
 import { profile } from "@/content/resume";
 import "./globals.css";
 
@@ -21,10 +22,10 @@ export const metadata: Metadata = {
     default: `${profile.name} — Full-Stack Software Engineer`,
     template: `%s | ${profile.name}`,
   },
-  description: profile.summary,
+  description: `${profile.headline} ${profile.subline}`,
   openGraph: {
     title: `${profile.name} — Full-Stack Software Engineer`,
-    description: profile.summary,
+    description: `${profile.headline} ${profile.subline}`,
     url: siteUrl,
     siteName: profile.name,
     locale: "en_US",
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: `${profile.name} — Full-Stack Software Engineer`,
-    description: profile.summary,
+    description: `${profile.headline} ${profile.subline}`,
   },
   robots: {
     index: true,
@@ -51,7 +52,10 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="relative min-h-full flex flex-col">
+        <AmbientBackground />
+        {children}
+      </body>
     </html>
   );
 }
