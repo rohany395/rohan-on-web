@@ -23,7 +23,7 @@ export function AboutSection() {
         <Stagger className="grid gap-6 lg:grid-cols-3">
           {skillPillars.map((pillar) => (
             <StaggerItem key={pillar.title}>
-              <div className="pillar-card glass-card h-full rounded-2xl p-6 sm:p-8">
+              <div className="pillar-card glass-card h-full p-6 sm:p-8">
                 <h3>{pillar.title}</h3>
                 <p>{pillar.description}</p>
                 <div className="mt-4 flex flex-wrap gap-2">
@@ -40,11 +40,11 @@ export function AboutSection() {
 
         <div className="grid gap-8 lg:grid-cols-2">
           <Reveal delay={0.06}>
-            <div className="glass-card rounded-2xl p-6 sm:p-8">
-              <h3 className="text-sm font-semibold uppercase tracking-wide text-muted">
+            <div className="glass-card p-6 sm:p-8">
+              <h3 className="font-mono text-xs font-semibold uppercase tracking-widest text-accent-secondary">
                 Education
               </h3>
-              <p className="mt-4 text-lg font-medium text-foreground">
+              <p className="mt-4 font-display text-xl text-foreground">
                 {education.degree}
               </p>
               <p className="mt-1 text-accent">{education.school}</p>
@@ -55,15 +55,15 @@ export function AboutSection() {
           </Reveal>
 
           <Reveal delay={0.12}>
-            <div className="glass-card rounded-2xl p-6 sm:p-8">
-              <h3 className="text-sm font-semibold uppercase tracking-wide text-muted">
+            <div className="glass-card p-6 sm:p-8">
+              <h3 className="font-mono text-xs font-semibold uppercase tracking-widest text-accent-secondary">
                 Leadership
               </h3>
-              <p className="mt-4 text-lg font-medium text-foreground">
+              <p className="mt-4 font-display text-xl text-foreground">
                 {leadership.role}
               </p>
               <p className="mt-1 text-accent">{leadership.organization}</p>
-              <p className="mt-3 text-sm leading-relaxed text-muted sm:text-base">
+              <p className="mt-3 font-mono text-sm leading-relaxed text-muted sm:text-base">
                 {leadership.description}
               </p>
             </div>
@@ -72,10 +72,10 @@ export function AboutSection() {
 
         <Reveal delay={0.1}>
           <div className="cta-panel relative">
-            <p className="relative text-lg text-foreground">
+            <p className="relative font-display text-xl text-foreground">
               Interested in working together?
             </p>
-            <p className="relative mt-2 text-muted">
+            <p className="relative mt-2 font-mono text-sm text-muted">
               {profile.location} &middot; {profile.email}
             </p>
             <div className="relative mt-6 flex flex-wrap justify-center gap-3">

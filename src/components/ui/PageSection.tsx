@@ -24,7 +24,9 @@ export function PageSection({
       id={id}
       className={`${sectionClass} ${className}`.trim()}
     >
-      <div className={`mx-auto max-w-5xl px-6 ${innerClassName}`.trim()}>
+      <div
+        className={`mx-auto max-w-5xl border-x-2 border-border px-6 ${innerClassName}`.trim()}
+      >
         {children}
       </div>
     </section>

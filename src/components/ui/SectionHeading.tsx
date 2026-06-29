@@ -12,11 +12,13 @@ export function SectionHeading({
   return (
     <div className="max-w-2xl">
       <p className="section-label">{label}</p>
-      <h2 className="mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+      <h2 className="mt-4 font-display text-3xl tracking-wide text-foreground sm:text-4xl">
         {title}
       </h2>
       {description ? (
-        <p className="mt-4 leading-relaxed text-muted">{description}</p>
+        <p className="mt-4 font-mono text-sm leading-relaxed text-muted sm:text-base">
+          {description}
+        </p>
       ) : null}
     </div>
   );

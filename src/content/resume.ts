@@ -69,10 +69,10 @@ export const profile: Profile = {
   github: "https://github.com/rohany395",
   headline: "I build software millions use — and AI products that ship.",
   subline:
-    "Full-stack engineer. Previously WebMD. Now at Syracuse building research systems and multimodal AI.",
+    "Full-stack engineer. Ex-WebMD. M.S. Information Systems, Syracuse University.",
   summary:
     "Full-stack software engineer with 4+ years shipping production web applications for millions of users. Strong across React/TypeScript frontends, Python and Node backends, SQL, and cloud infrastructure.",
-  availability: "Available May 2026",
+  availability: "Open to opportunities",
   resumePath: "/Rohan_Yadav_Resume.pdf",
 };
 
@@ -88,8 +88,8 @@ export const experience: Experience[] = [
     id: "syracuse-gra",
     company: "Syracuse University",
     role: "Graduate Research Assistant",
-    period: "Aug 2025 – Mar 2026",
-    timeline: "current",
+    period: "Aug 2025 – May 2026",
+    timeline: "previous",
     bullets: [
       "Secured 2 additional years of stakeholder funding by leading a 4-person team delivering an Android app on ATAK.",
       "Integrated an LLM pipeline to turn unstructured field data into actionable insights for users.",
@@ -161,7 +161,7 @@ export const education: Education = {
   degree: "M.S. Information Systems",
   school: "Syracuse University",
   gpa: "3.86",
-  period: "May 2026",
+  period: "Graduated May 2026",
 };
 
 export const skillPillars: SkillPillar[] = [
