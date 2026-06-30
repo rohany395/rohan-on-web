@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { siteUrl } from "@/lib/site";
 
 const lastContentUpdate = new Date("2026-06-29");
 
