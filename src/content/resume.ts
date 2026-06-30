@@ -1,13 +1,11 @@
 export type Profile = {
   name: string;
   location: string;
-  phone: string;
   email: string;
   linkedin: string;
   github: string;
   headline: string;
   subline: string;
-  summary: string;
   availability: string;
   resumePath: string;
 };
@@ -22,12 +20,10 @@ export type Experience = {
   company: string;
   role: string;
   period: string;
-  timeline: "current" | "previous";
   bullets: string[];
   featured?: boolean;
   pullQuote?: string;
   compact?: boolean;
-  links?: { label: string; href: string }[];
 };
 
 export type Project = {
@@ -63,15 +59,12 @@ export type Leadership = {
 export const profile: Profile = {
   name: "Rohan Yadav",
   location: "Syracuse, NY",
-  phone: "(315) 395-3313",
   email: "rohany395@gmail.com",
   linkedin: "https://linkedin.com/in/rohan-yadav5/",
   github: "https://github.com/rohany395",
   headline: "I build software millions use — and AI products that ship.",
   subline:
     "Full-stack engineer. Ex-WebMD. M.S. Information Systems, Syracuse University.",
-  summary:
-    "Full-stack software engineer with 4+ years shipping production web applications for millions of users. Strong across React/TypeScript frontends, Python and Node backends, SQL, and cloud infrastructure.",
   availability: "Open to opportunities",
   resumePath: "/Rohan_Yadav_Resume.pdf",
 };
@@ -89,7 +82,6 @@ export const experience: Experience[] = [
     company: "Syracuse University",
     role: "Graduate Research Assistant",
     period: "Aug 2025 – May 2026",
-    timeline: "previous",
     bullets: [
       "Secured 2 additional years of stakeholder funding by leading a 4-person team delivering an Android app on ATAK.",
       "Integrated an LLM pipeline to turn unstructured field data into actionable insights for users.",
@@ -102,7 +94,6 @@ export const experience: Experience[] = [
     company: "WebMD",
     role: "Software Engineer",
     period: "Apr 2022 – Dec 2024",
-    timeline: "previous",
     featured: true,
     pullQuote:
       "Contributed to closing a $9M deal within one month of release.",
@@ -119,7 +110,6 @@ export const experience: Experience[] = [
     company: "WebMD",
     role: "Trainee Software Engineer",
     period: "Nov 2021 – Mar 2022",
-    timeline: "previous",
     compact: true,
     bullets: [
       "Shipped company-wide rewards app used by ~100 employees.",
