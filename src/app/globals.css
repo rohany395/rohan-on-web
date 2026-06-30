@@ -42,6 +42,20 @@ html {
   .retro-scanlines {
     animation: none;
   }
+
+  .glass-card,
+  .glass-card:hover,
+  .btn-primary,
+  .btn-primary:hover,
+  .btn-primary:active,
+  .btn-ghost:hover {
+    transform: none;
+    transition: none;
+  }
+
+  .status-dot::after {
+    animation: none;
+  }
 }
 
 body {
