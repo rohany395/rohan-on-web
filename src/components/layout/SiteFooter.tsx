@@ -35,7 +35,7 @@ export function SiteFooter() {
           </a>
         </div>
         <p className="font-mono text-xs text-muted sm:text-right">
-          &copy; {year} // EOF
+          &copy; {year} {"// EOF"}
         </p>
       </div>
     </footer>

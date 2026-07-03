@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { IBM_Plex_Mono, VT323 } from "next/font/google";
 import { AmbientBackground } from "@/components/ui/AmbientBackground";
 import { profile } from "@/content/resume";
+import { siteUrl } from "@/lib/site";
 import "./globals.css";
 
 const vt323 = VT323({
@@ -15,8 +16,6 @@ const ibmPlexMono = IBM_Plex_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
 });
-
-const siteUrl = "https://rohan-on-web.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

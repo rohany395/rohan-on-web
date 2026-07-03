@@ -5,9 +5,12 @@ import { PageSection } from "@/components/ui/PageSection";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 function highlightMetrics(text: string) {
-  const parts = text.split(/(\$[\d.]+[MBK]?|\d+%|\d+\+)/g);
+  const metricPattern =
+    /(\$[\d.]+[MBK]?|\d+%|\d+\+|\d+ days?|Millions)/gi;
+  const isMetric = /^\$[\d.]+[MBK]?$|^\d+%$|^\d+\+$|^\d+ days?$|^Millions$/i;
+  const parts = text.split(metricPattern);
   return parts.map((part, i) =>
-    /(\$[\d.]+[MBK]?|\d+%|\d+\+)/.test(part) ? (
+    isMetric.test(part) ? (
       <strong key={i} className="font-semibold text-accent-secondary">
         {part}
       </strong>
